@@ -44,8 +44,8 @@ class CsvHelper(private val filePath: String) {
         return try {
             val reader = CSVReader(FileReader("$filePath/$fileName"))
 
+            //readAll()을 이용해 데이터 읽기
             reader.use {
-                //readAll()을 이용해 데이터 읽기
                 it.readAll()
             }
         } catch (e: IOException) {
@@ -62,11 +62,10 @@ class CsvHelper(private val filePath: String) {
             val reader = CSVReader(FileReader("$filePath/$fileName"))
             val dataArray = arrayListOf<Array<String>>()
 
+            //for문을 이용해 데이터 읽기
             reader.use {
-                //iterator()을 이용해 데이터 읽기
-                val iterator = it.iterator()
-                while (iterator.hasNext()) {
-                    dataArray.add(iterator.next())
+                for (data in it) {
+                    dataArray.add(data)
                 }
             }
 
