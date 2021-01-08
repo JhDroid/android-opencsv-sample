@@ -9,65 +9,67 @@ import java.io.IOException
 
 class CsvHelper(private val filePath: String) {
     fun writeAllData(fileName: String, dataList: ArrayList<Array<String>>) {
-        val cw = CSVWriter(FileWriter(File("$filePath/$fileName")))
-
         try {
-            //writeAll()을 이용한 리스트 데이터 등록
-            cw.writeAll(dataList)
+            val cw = CSVWriter(FileWriter(File("$filePath/$fileName")))
+
+            cw.use {
+                //writeAll()을 이용한 리스트 데이터 등록
+                it.writeAll(dataList)
+            }
         } catch (e: IOException) {
             if (BuildConfig.DEBUG) {
                 e.printStackTrace()
             }
-        } finally {
-            cw.close()
         }
     }
 
     fun writeData(fileName: String, dataList: ArrayList<Array<String>>) {
-        val cw = CSVWriter(FileWriter(File("$filePath/$fileName")))
-
-        val it = dataList.iterator()
         try {
+            val cw = CSVWriter(FileWriter(File("$filePath/$fileName")))
+
             //writeNext()를 이용한 리스트 데이터 등록
-            while (it.hasNext()) {
-                val data = it.next()
-                cw.writeNext(data)
+            cw.use {
+                val iterator = dataList.iterator()
+                while (iterator.hasNext()) {
+                    val data = iterator.next()
+                    cw.writeNext(data)
+                }
             }
         } catch (e: IOException) {
             if (BuildConfig.DEBUG) {
                 e.printStackTrace()
             }
-        } finally {
-            cw.close()
         }
     }
 
     fun readAllCsvData(fileName: String) : List<Array<String>> {
-        val reader = CSVReader(FileReader("$filePath/$fileName"))
-
         return try {
-            //readAll()을 이용해 데이터 읽기
-            reader.readAll()
+            val reader = CSVReader(FileReader("$filePath/$fileName"))
+
+            reader.use {
+                //readAll()을 이용해 데이터 읽기
+                it.readAll()
+            }
         } catch (e: IOException) {
             if (BuildConfig.DEBUG) {
                 e.printStackTrace()
             }
 
             listOf()
-        } finally {
-            reader.close()
         }
     }
 
     fun readCsvData(fileName: String) : List<Array<String>> {
-        val reader = CSVReader(FileReader("$filePath/$fileName"))
-        val dataArray = arrayListOf<Array<String>>()
-
         return try {
-            //iterator()을 이용해 데이터 읽기
-            val it = reader.iterator()
-            while (it.hasNext()) {
-                dataArray.add(it.next())
+            val reader = CSVReader(FileReader("$filePath/$fileName"))
+            val dataArray = arrayListOf<Array<String>>()
+
+            reader.use {
+                //iterator()을 이용해 데이터 읽기
+                val iterator = it.iterator()
+                while (iterator.hasNext()) {
+                    dataArray.add(iterator.next())
+                }
             }
 
             dataArray
@@ -77,8 +79,6 @@ class CsvHelper(private val filePath: String) {
             }
 
             listOf()
-        } finally {
-            reader.close()
         }
     }
 }
