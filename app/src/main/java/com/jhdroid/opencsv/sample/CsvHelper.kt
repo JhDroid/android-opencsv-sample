@@ -12,8 +12,8 @@ class CsvHelper(private val filePath: String) {
         try {
             val cw = CSVWriter(FileWriter(File("$filePath/$fileName")))
 
+            //writeAll()을 이용한 리스트 데이터 등록
             cw.use {
-                //writeAll()을 이용한 리스트 데이터 등록
                 it.writeAll(dataList)
             }
         } catch (e: IOException) {
@@ -29,9 +29,7 @@ class CsvHelper(private val filePath: String) {
 
             //writeNext()를 이용한 리스트 데이터 등록
             cw.use {
-                val iterator = dataList.iterator()
-                while (iterator.hasNext()) {
-                    val data = iterator.next()
+                for (data in dataList) {
                     cw.writeNext(data)
                 }
             }
