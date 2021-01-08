@@ -3,6 +3,8 @@ package com.jhdroid.opencsv.sample
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
     //테스트용 파일명1
@@ -53,15 +55,15 @@ class MainActivity : AppCompatActivity() {
          * read
          * */
         //1번 파일 읽기
-        var data = csvHelper.readAllCsvData(FILE_NAME_1)
-        for (arrayData in data) {
-            Log.d("jhdroid_test", "data : ${arrayData[0]} , ${arrayData[1]}")
+        var dataList = csvHelper.readAllCsvData(FILE_NAME_1)
+        for (data in dataList) {
+            Log.d("jhdroid_test", "data : ${Arrays.deepToString(data)}")
         }
 
         //2번 파일 읽기
-        data = csvHelper.readCsvData(FILE_NAME_2)
-        for (arrayData in data) {
-            Log.d("jhdroid_test", "data : ${arrayData[0]} , ${arrayData[1]}")
+        dataList = csvHelper.readCsvData(FILE_NAME_2)
+        for (data in dataList) {
+            Log.d("jhdroid_test", "data : ${Arrays.deepToString(data)}")
         }
     }
 }
