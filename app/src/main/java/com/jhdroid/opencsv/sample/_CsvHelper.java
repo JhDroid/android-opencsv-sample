@@ -20,10 +20,9 @@ public class _CsvHelper {
     public void writeAllData(String fileName, ArrayList<String[]> dataList) {
         File file = new File(filePath + "/" + fileName);
 
-        try (FileWriter fw = new FileWriter(file)) {
-            try (CSVWriter cw = new CSVWriter(fw)) {
-                cw.writeAll(dataList);
-            }
+        try (FileWriter fw = new FileWriter(file);
+             CSVWriter cw = new CSVWriter(fw)) {
+            cw.writeAll(dataList);
         } catch (IOException e) {
             if (BuildConfig.DEBUG) {
                 e.printStackTrace();
@@ -34,11 +33,10 @@ public class _CsvHelper {
     public void writeData(String fileName, ArrayList<String[]> dataList) {
         File file = new File(filePath + "/" + fileName);
 
-        try (FileWriter fw = new FileWriter(file)) {
-            try (CSVWriter cw = new CSVWriter(fw)) {
-                for (String[] strings : dataList) {
-                    cw.writeNext(strings);
-                }
+        try (FileWriter fw = new FileWriter(file);
+             CSVWriter cw = new CSVWriter(fw)) {
+            for (String[] strings : dataList) {
+                cw.writeNext(strings);
             }
         } catch (IOException e) {
             if (BuildConfig.DEBUG) {
@@ -50,10 +48,9 @@ public class _CsvHelper {
     public List<String[]> readAllCsvData(String fileName) {
         File file = new File(filePath + "/" + fileName);
 
-        try (FileReader fr = new FileReader(file)) {
-            try (CSVReader reader = new CSVReader(fr)) {
-                return reader.readAll();
-            }
+        try (FileReader fr = new FileReader(file);
+             CSVReader reader = new CSVReader(fr)) {
+            return reader.readAll();
         } catch (IOException e) {
             if (BuildConfig.DEBUG) {
                 e.printStackTrace();
@@ -67,14 +64,13 @@ public class _CsvHelper {
         File file = new File(filePath + "/" + fileName);
         List<String[]> dataArray = new ArrayList<>();
 
-        try (FileReader fr = new FileReader(file)) {
-            try (CSVReader reader = new CSVReader(fr)) {
-                for (String[] data : reader) {
-                    dataArray.add(data);
-                }
-
-                return dataArray;
+        try (FileReader fr = new FileReader(file);
+             CSVReader reader = new CSVReader(fr)) {
+            for (String[] data : reader) {
+                dataArray.add(data);
             }
+
+            return dataArray;
         } catch (IOException e) {
             if (BuildConfig.DEBUG) {
                 e.printStackTrace();
