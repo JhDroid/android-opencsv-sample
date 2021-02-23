@@ -1,4 +1,4 @@
-package com.jhdroid.opencsv.sample;
+package com.jhdroid.opencsv.sample.java;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -6,11 +6,13 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.jhdroid.opencsv.sample.R;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class _MainActivity extends AppCompatActivity {
+public class MainActivity_ extends AppCompatActivity {
     //테스트용 파일명1
     private final String FILE_NAME_1 = "jhdroid_sample_1.csv";
 
@@ -26,7 +28,7 @@ public class _MainActivity extends AppCompatActivity {
         //내부 저장소 경로
         String filePath = getFilesDir().toString();
 
-        _CsvHelper csvHelper = new _CsvHelper(filePath);
+        CsvHelper_ csvHelper = new CsvHelper_(filePath);
 
         /**
          * write

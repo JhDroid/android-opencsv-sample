@@ -1,5 +1,6 @@
-package com.jhdroid.opencsv.sample;
+package com.jhdroid.opencsv.sample.java;
 
+import com.jhdroid.opencsv.sample.BuildConfig;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 
@@ -10,10 +11,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class _CsvHelper {
+public class CsvHelper_ {
     private String filePath;
 
-    public _CsvHelper(String filePath) {
+    public CsvHelper_(String filePath) {
         this.filePath = filePath;
     }
 
