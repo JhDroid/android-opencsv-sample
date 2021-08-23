@@ -18,7 +18,7 @@
         </activity>
 
         <!--자바, 주석 풀고 테스트-->
-        <activity android:name=".java.MainActivity_" >
+        <activity android:name=".java.JavaMainActivity" >
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
 

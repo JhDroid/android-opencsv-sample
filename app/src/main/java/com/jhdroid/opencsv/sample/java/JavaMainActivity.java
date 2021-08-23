@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity_ extends AppCompatActivity {
+public class JavaMainActivity extends AppCompatActivity {
     //테스트용 파일명1
     private final String FILE_NAME_1 = "jhdroid_sample_1.csv";
 
@@ -28,7 +28,7 @@ public class MainActivity_ extends AppCompatActivity {
         //내부 저장소 경로
         String filePath = getFilesDir().toString();
 
-        CsvHelper_ csvHelper = new CsvHelper_(filePath);
+        JavaCsvHelper csvHelper = new JavaCsvHelper(filePath);
 
         /**
          * write

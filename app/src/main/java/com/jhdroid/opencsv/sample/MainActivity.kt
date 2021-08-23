@@ -35,6 +35,8 @@ class MainActivity : AppCompatActivity() {
         dataList1.add(arrayOf("Kim", "28"))
         dataList1.add(arrayOf("Lee", "22"))
         dataList1.add(arrayOf("Kawk", "25"))
+        dataList1.add(arrayOf("김준희", "25"))
+        dataList1.add(arrayOf("곽지선", "25"))
 
         csvHelper.writeAllData(FILE_NAME_1, dataList1)
 

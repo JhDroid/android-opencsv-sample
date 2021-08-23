@@ -11,10 +11,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CsvHelper_ {
+public class JavaCsvHelper {
     private String filePath;
 
-    public CsvHelper_(String filePath) {
+    public JavaCsvHelper(String filePath) {
         this.filePath = filePath;
     }
 
